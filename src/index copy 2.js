@@ -40,7 +40,7 @@ const OTP=(req)=>{
 }
 
 const anotherFlujo=(req)=>{
-    respuestasController.ObtenerRespuestaXFlujo(req.body,9).then(data => {
+    respuestasController.ObtenerRespuestaXFlujo(req.body,4).then(data => {
         enviarMensaje(req,data);
         console.log(data);
       })
@@ -85,20 +85,20 @@ const enviarRespuesta=(req,res,texto)=>{
 
         client.calls
                 .create({
-                url: 'https://apiregistro.adexperu.org.pe/procesar-digitos/1', // URL de acción del controlador de ASP.NET Core
+                url: 'http://localhost:8081/procesar-digitos/1', // URL de acción del controlador de ASP.NET Core
                 //url: 'https://localhost:7095/procesar-digitos', // URL de acción del controlador de ASP.NET Core
                 method: 'GET', // Método HTTP utilizado para la solicitud
                 //body: JSON.stringify(postData),
                 //headers: { 'Content-Type': 'application/json' },
                 to: callFrom, // Número de teléfono de destino
                 from: callTo, // Número de teléfono de origen (tu número de Twilio)
-                statusCallback: 'https://apiregistro.adexperu.org.pe/procesar-digitos2'
+                statusCallback: 'http://localhost:8081/procesar-digitos2'
                 })
                 .then(OTP(req))
                 .catch(error => console.error(error));
         
     }
-
+    /*
     //*Llamar al usuario LOGUEO
     if(texto=='Ingrese su contraseña en la llamada.'){
 
@@ -111,29 +111,19 @@ const enviarRespuesta=(req,res,texto)=>{
 
         client.calls
                 .create({
-                url: 'https://apiregistro.adexperu.org.pe/procesar-digitos/2', // URL de acción del controlador de ASP.NET Core
+                url: 'http://localhost:8081/procesar-digitos/2', // URL de acción del controlador de ASP.NET Core
                 //url: 'https://localhost:7095/procesar-digitos', // URL de acción del controlador de ASP.NET Core
                 method: 'GET', // Método HTTP utilizado para la solicitud
                 //body: JSON.stringify(postData),
                 //headers: { 'Content-Type': 'application/json' },
                 to: callFrom, // Número de teléfono de destino
                 from: callTo, // Número de teléfono de origen (tu número de Twilio)
-                statusCallback: 'https://apiregistro.adexperu.org.pe/procesar-digitos3'
+                statusCallback: 'http://localhost:8081/procesar-digitos3'
                 })
                 .catch(error => console.error(error));
-
-
-                setTimeout(() => {
-                    respuestasController.ObtenerRespuestaXFlujo(req.body,13).then(data => {
-                        enviarMensaje(req,data);
-                        console.log(data);
-                      })
-                      .catch(error => {
-                        console.log(error);
-                      });
-                  }, 40000);
         
     }
+    */
 
     //*Validacion EQUIFAX OK
 };
