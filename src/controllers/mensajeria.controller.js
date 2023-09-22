@@ -9,7 +9,7 @@ const Flujo=(rpta)=>{
         body: rpta.Body
     }
     console.log(postData);
-    return fetch('http://localhost:8081/SMS/Mensaje/', {
+    return fetch('http://apiregistro.adexperu.org.pe/SMS/Mensaje/', {
         method: 'POST',
         body: JSON.stringify(postData),
         headers: { 'Content-Type': 'application/json' },
@@ -25,7 +25,7 @@ const ObtenerRespuestaXFlujo=(rpta,idflujo)=>{
         idFlujo: idflujo
     }
     console.log(postData2);
-    return fetch('http://localhost:8081/SMS/FlujoAdicional/', {
+    return fetch('http://apiregistro.adexperu.org.pe/SMS/FlujoAdicional/', {
         method: 'POST',
         body: JSON.stringify(postData2),
         headers: { 'Content-Type': 'application/json' },
